@@ -1,3 +1,4 @@
+const { table } = require("console");
 const express = require("express");
 const path = require("path");
 
@@ -27,7 +28,12 @@ app.get("/tables", (req, res) => {
 app.post("/api/tables", (req, res) => {
   const newTable = req.body;
   console.log(newTable);
-  tables.push(newTable);
+
+  if (tables.length < 5) {
+    tables.push(newTable);
+  } else {
+    waitList.push(newTable);
+  }
 
   res.json(newTable);
 });
