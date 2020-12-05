@@ -4,9 +4,8 @@ const app = express();
 const PORT = 9000;
 
 const tables = [
-  { name: "Joe", phoneNumber: "123456789", customerNumber: 123, customerId: 2 },
+  { name: "Joe", phoneNumber: "1234567890", email: "j@gmail.com", id: 1 },
 ];
-
 const waitList = [];
 
 app.get("/", (req, res) => {
@@ -17,8 +16,12 @@ app.get("/makereservation", (req, res) => {
   res.send("Make Reservation");
 });
 
-app.get("/viewtables", (req, res) => {
+app.get("/api/tables", (req, res) => {
   res.send(tables);
+});
+
+app.get("/api/waitlist", (req, res) => {
+  res.send(waitList);
 });
 
 app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
