@@ -24,12 +24,28 @@ app.get("/tables", (req, res) => {
   res.sendFile(path.join(__dirname, "./tables.html"));
 });
 
+app.post("/api/tables", (req, res) => {
+  const newTable = req.body;
+  console.log(newTable);
+  tables.push(newTable);
+
+  res.json(newTable);
+});
+
 app.get("/api/tables", (req, res) => {
   res.send(tables);
 });
 
 app.get("/api/waitlist", (req, res) => {
   res.send(waitList);
+});
+
+app.post("/api/waitlist", (req, res) => {
+  const newTable = req.body;
+  console.log(newTable);
+  waitList.push(newTable);
+
+  res.json(newTable);
 });
 
 app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
